@@ -72,7 +72,7 @@
 //paredes
 
 
-// walls();
+walls();
                    
  
           /*   createWalls([
@@ -84,6 +84,7 @@
         ]);
        */
 
+       console.log('setup');
 
             shark.src = 'pikachu.gif';
             ///shark.src = 'ball.png';
@@ -597,15 +598,19 @@ function createWalls(coords, type = null){
         //        e = null;
             }
         }));
-    //    walls();
+        run();
     }
 
 
 
     function endGame(){
-        audio2.play();
-        setTimeout(run, 450);
+        // audio2.play();// asi no se reproducia el audio XD
         
+        let time = setTimeout(()=>{
+            audio2.play();
+        }, 0);
+        // clearInterval(time);
+        levelUp();
     }
 
 
