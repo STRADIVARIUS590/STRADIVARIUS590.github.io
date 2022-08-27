@@ -91,7 +91,7 @@ walls();
             coin.src = 'piedra2.png';
 
 
-        //    audio1.src = 'opening.mp3';
+            audio1.src = 'opening.mp3';
             audio2.src = 'mario-coin.mp3';
             paint();
         }
@@ -591,14 +591,18 @@ function createWalls(coords, type = null){
 
 
     function levelUp(){
-        paredes.forEach((e=>{
+        paredes = []
+       /* paredes.forEach((e=>{
             if(e.type != 'limit'){
                 e.x = -100;
                 e.y = -100; 
-        //        e = null;
+                e = null;
+
+                
             }
-        }));
+        }));*/
         run();
+        console.log(paredes.length);
     }
 
 
