@@ -9,7 +9,25 @@
         @font-face {
             font-family: 'KulminoituvaRegular';
             src: url('Pokemon Solid.ttf');
-            }
+        }
+
+        canvas{
+            /* border: 1px solid black; */
+        }
+
+        .nivel1{
+            padding-left: 20%;
+            width:810px;
+            height: 810px;
+        }
+        .nivel2{
+        /* //    width:1000px; */
+            padding-left: 1%;
+            width:810px;
+            height:810px;
+
+            /* border: 1px solid black; */
+        }
  
         #imagen{
             display: none;
@@ -19,7 +37,7 @@
 </head>
 <body>
     <center>
-        <canvas id="canvas" width="510" height="560">
+        <canvas id="canvas"  width="810" height="810" class="nivel1">
             Hola, tu navegador no funciona
         </canvas>
 
@@ -62,7 +80,7 @@
         function run(){
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
-            player1 = new Cuadro(5, 5, 40,40, 'red');
+            player1 = new Cuadro(5,5, 40,40, 'red');
             player2 = new Cuadro(26, 51, 40,40, 'green')
      
             canvas.addEventListener('click', e=>{
@@ -75,14 +93,7 @@
 walls();
                    
  
-          /*   createWalls([
-            {x:1,y:2},{x:1,y:3},{x:1,y:4},
-            {x:1,y:5},{x:1,y:6},{x:1,y:7},
-            {x:1,y:8},{x:1,y:9},{x:1,y:10},
-            {x:1,y:11},{x:1,y:12},{x:1,y:13},
-            {x:1,y:14},{x:1,y:15},{x:1,y:16},
-        ]);
-       */
+    
 
        console.log('setup');
 
@@ -97,9 +108,9 @@ walls();
         }
 
 
-function createWalls(coords, type = null){
+function createWalls(x, y, type = null, point_size){
       //   coords.forEach(element => {
-             paredes.push(new Cuadro(coords.x,coords.y,8,8,'green', type));
+             paredes.push(new Cuadro(x,y,point_size,point_size,'green', type));
          //    paredes.push(new Cuadro(coords.x,coords.y,8,8,'rgb(98, 171, 142, 1)'));
             //  paredes.push(new Cuadro(coords.x,coords.y,6,6,'rgb(176, 252, 125, 1)'));
            
@@ -121,13 +132,13 @@ function createWalls(coords, type = null){
           //  player2.pintar(ctx);
  
             ctx.fillStyle = 'white';
-            ctx.fillRect(0,45,550,550);
-         //   ctx.fillStyle = player1.c;
+            ctx.fillRect(0,45,800,800);
+            ctx.fillStyle = player1.c;
 
 
-         //  ctx.fillRect(player1.x,  player1.y, 40,40);
+           ctx.fillRect(player1.x,  player1.y, 40,40);
 
-             ctx.drawImage(shark, player1.x, player1.y, 40,40);
+            // ctx.drawImage(shark, player1.x, player1.y, 40,40);
            // ctx.fillStyle = player2.c;
             ctx.drawImage(coin, player2.x, player2.y, 40,40);
 
@@ -249,23 +260,23 @@ function createWalls(coords, type = null){
             paredes.forEach(pared => {
                 
                 if(player1.se_tocan(pared)){
-                    if(direccion == 'up'){
-                    player1.y +=speed;
-                }
-
-                 if(direccion == 'down'){
-                    player1.y -=speed;
-                } 
-
-
-                 if(direccion == 'rigth'){
-                    player1.x -=speed;
-    
-                }
                 
-                if(direccion == 'left'){
-                    player1.x +=speed;
-                }  
+                    if(direccion == 'up'){
+                        player1.y +=speed;
+                    }
+
+                    if(direccion == 'down'){
+                        player1.y -=speed;
+                    } 
+
+
+                    if(direccion == 'rigth'){
+                        player1.x -=speed;
+                    }   
+                
+                    if(direccion == 'left'){
+                        player1.x +=speed;
+                    }  
             }
         });
 
@@ -313,6 +324,7 @@ function createWalls(coords, type = null){
               
                 direccion = 'left'
                 shark.src =  'pikachu.gif';
+                
                 // superX-=20;
             } 
             if(e.keyCode==39 || e.keyCode == 68){
@@ -368,223 +380,33 @@ function createWalls(coords, type = null){
         };
     }
 
-    /* 
+ 
+ 
 
-     let desde = 4, hasta = 55, altura = 0,  type = 'hort';
-            for(let i = desde; i<hasta; i++){
-                if(type == 'vert')
-                    createWalls({x:0, y:i + altura}, 'limit');// vert left
-                    //createWalls({x:0, y:i}, 'limit');// vert left
-                else     
-                    createWalls({x:i, y:altura + 4});
-            }
-    
-    
-    
-    
-    */
+    function fence(from, to, height, type, clase, point_size = 8){
+        for(let i = from; i < to; i++){
+            if(type == 'vert')
+                createWalls(height, i, clase,point_size);
+            else if(type == 'hor')
+                createWalls(i,height,clase,point_size);
+        }
+    }
 
 
+    function loadLevel(level){
+        level.forEach((element)=>{
+            fence(
+                element.from,
+                element.to,
+                element.heigth,
+                element.type,
+                element.clase
+            );
+        })
+    }
     function walls(){
-           // let desde = 4, hasta = 55, altura = 0,  type = 'hort';
-            for(let i =  4; i<55; i++){
-            //    if(type == 'vert')
-              //      createWalls({x:0, y:i + altura}, 'limit');// vert left
-                    createWalls({x:0, y:i}, 'limit');// vert left
-                //else     
-                  //  createWalls({x:i, y:altura + 4});
-            }
-
- 
-
-            for(let i = 1  ; i<50; i++){// hor up
-                createWalls({x:i, y:4}, 'limit');
-            }
-
-            for(let i = 1  ; i<50; i++){// hor down
-                //createWalls({x:i, y:55});
-                createWalls({x:i, y:55}, 'limit');
-            } 
-
-
-            for(let i = 4 ; i<56; i++){// vert rit
-                createWalls({x:50, y:i}, 'limit');
-            } 
-
-          // lineas verticales 
-
-
-            
-          
-            for(let i = 5  ; i<25; i++){
-                createWalls({x:5, y:i+5});
-            } 
-
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:10, y:i+5});
-            } 
-
-            for(let i = 5  ; i<30; i++){
-                createWalls({x:20, y:i+10});
-            } 
-
-
-            for(let i = 5  ; i<25; i++){
-                createWalls({x:25, y:i+5});
-            } 
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:35, y:i+10});
-            } 
-
-
-            for(let i = 5  ; i<10; i++){
-                createWalls({x:40, y:i+25});
-            } 
-
-            for(let i = 5  ; i<10; i++){
-                createWalls({x:30, y:i+25});
-            } 
-            
-            
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:45, y:i});
-            } 
-            
-            for(let i = 5  ; i<25; i++){
-                createWalls({x:10, y:i+25});
-            } 
-             
-
-
-            for(let i = 5  ; i<20; i++){
-                createWalls({x:15, y:i+25});
-            }  
- 
-
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:20, y:i+40});
-            }  
- 
-
-            for(let i = 5  ; i<20; i++){
-                createWalls({x:35, y:i+30});
-            }  
- 
-
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:25, y:i+35});
-            }  
-    
-            for(let i = 5  ; i<15; i++){
-                createWalls({x:40, y:i+35});
-            }  
-
-            for(let i = 5  ; i<10; i++){
-                createWalls({x:45, y:i+45});
-            }  
-
-
-            for(let i = 5  ; i<10; i++){
-                createWalls({x:35, y:i+45});
-            }  
-    
- 
-
-
-
-
-            // horizontal 
-
-            for(let i = 0  ; i<=35; i++){
-                createWalls({x:i+5, y:10});
-            }
-
-            for(let i = 0  ; i<16; i++){
-                createWalls({x:i+30, y:15});
-            }
-   
-            for(let i = 0  ; i<5; i++){
-                createWalls({x:i+15, y:15});
-            }
-            for(let i = 0  ; i<=5; i++){
-                createWalls({x:i+10, y:20});
-            }
-   
-             for(let i = 0 ; i<=15; i++){
-                createWalls({x:i+5, y:25});
-            }
-            for(let i = 1  ; i<15; i++){
-                createWalls({x:i+29, y:25});
-            } 
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+25, y:20});
-            }
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+40, y:20});
-            }
-
-            for(let i = 1  ; i<15; i++){
-                createWalls({x:i+30, y:30});
-            }
-
-      
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+10, y:30});
-            }
-
-
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i, y:35});
-            }
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+25, y:35});
-            }
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+40, y:35});
-            }
-
-
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i, y:45});
-            }
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+5, y:40});
-            }
-
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+20, y:40});
-            }
-
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+35, y:40});
-            }
-
-
-            
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+15, y:45});
-            }
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+30, y:45});
-            }
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+45, y:45});
-            }
-
-
-            for(let i = 1  ; i<10; i++){
-                createWalls({x:i+5, y:50});
-            }
-            for(let i = 1  ; i<5; i++){
-                createWalls({x:i+25, y:50});
-            }
-
-
-       
-            
-            
- 
- 
+        canvas.classList.add('nivel2');
+        loadLevel(level2.walls);
     }
 
 
@@ -592,18 +414,31 @@ function createWalls(coords, type = null){
 
     function levelUp(){
         paredes = []
-       /* paredes.forEach((e=>{
+    //    canvas.classList.add('nivel2');
+       // loadLevel(level1)
+        // console.log(canvas.classList);
+        // paredes.filter(e=> e.type !=limit)
+/*         paredes.forEach((e=>{
             if(e.type != 'limit'){
                 e.x = -100;
                 e.y = -100; 
-                e = null;
-
-                
+                e = null;  
             }
-        }));*/
+        })); */
         run();
         console.log(paredes.length);
     }
+
+
+/*     function createWalls(arrayLevel){
+        arrayLevel.forEach((element)=>{
+            fence(element.from,
+            element.to,
+            element.height, 
+            element.type,
+            element.clase)
+        })
+    } */
 
 
 
@@ -616,9 +451,178 @@ function createWalls(coords, type = null){
         // clearInterval(time);
         levelUp();
     }
+    
+    
+
+ 
+    let level2 = {
+        'walls':[
+        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
+        {from:1, to:80,heigth:4,type:'hor',clase:'limit'},
+        {from:1, to:80,heigth:55,type:'hor',clase:'limit'},
+        {from:4, to:55,heigth:80,type:'vert',clase:'limit'},
+        
+     /*    {from:4, to:10,heigth:75,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:70,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:65,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:60,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:55,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:50,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:45,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:40,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:35,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:30,type:'vert',clase:''},// verticales 
+        // {from:4, to:10,heigth:25,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:20,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:15,type:'vert',clase:''},// verticales 
+        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales  */
+        {from:25, to:40,heigth:5, type:'vert',clase:''},// verticales 
+        // {from:50, to:55,heigth:5, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:5,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales 
+        {from:40, to:50,heigth:10, type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:10, type:'vert',clase:''},// verticales 
+       
+        {from:25, to:30,heigth:15,type:'vert',clase:''},// verticales 
+        {from:35, to:55,heigth:15, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:15,type:'vert',clase:''},// verticales         
+       
+        {from:50, to:55,heigth:20, type:'vert',clase:''},// verticales +++
+        {from:15, to:25,heigth:20,type:'vert',clase:''},// verticales 
+        {from:30, to:40,heigth:20,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:20,heigth:25,type:'vert',clase:''},// verticales 
+        {from:35, to:40,heigth:25, type:'vert',clase:''},// verticales 
+       
+        {from:10, to:15,heigth:30,type:'vert',clase:''},// verticales 
+        {from:20, to:25,heigth:30,type:'vert',clase:''},// verticales 
+        {from:30, to:45,heigth:30, type:'vert',clase:''},// verticales 
+       
+        {from:45, to:55,heigth:35, type:'vert',clase:''},// verticales
+        {from:25, to:30,heigth:35, type:'vert',clase:''},// verticales 
+       
+        {from:40, to:45,heigth:40, type:'vert',clase:''},// verticales
+        {from:15, to:30,heigth:40,type:'vert',clase:''},// verticales 
+       
+        {from:25, to:40,heigth:45, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:45, type:'vert',clase:''},// verticales
+        {from:4, to:15,heigth:45,type:'vert',clase:''},// verticales 
+        
+        {from:35, to:50,heigth:50, type:'vert',clase:''},// verticales
+        {from:15, to:25,heigth:50,type:'vert',clase:''},// verticales 
+            
+        {from:4, to:15,heigth:55,type:'vert',clase:''},// verticales 
+        {from:40, to:45,heigth:55, type:'vert',clase:''},// verticales
+        {from:30, to:35,heigth:55, type:'vert',clase:''},// verticales 
+        
+        {from:20, to:30,heigth:60,type:'vert',clase:''},// verticales 
+        {from:45, to:55,heigth:60, type:'vert',clase:''},// verticales
+        {from:35, to:40,heigth:60, type:'vert',clase:''},// verticales
+        
+        {from:30, to:35,heigth:65, type:'vert',clase:''},// verticales 
+        {from:10, to:15,heigth:65,type:'vert',clase:''},// verticales 
+        
+        {from:15, to:20,heigth:70,type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:70, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:70, type:'vert',clase:''},// verticales
+        
+        {from:45, to:55,heigth:75, type:'vert',clase:''},// verticales
+        {from:20, to:40,heigth:75, type:'vert',clase:''},// verticales 
+        
+        
 
 
 
+        
+   
+        
+        
+        
+        
+
+
+
+        {from:15, to:25,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:30, to:40,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:50, to:55,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:60, to:80,heigth:10,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:10,heigth:15,type:'hor',clase:''},// horizontales
+        {from:25, to:30,heigth:15,type:'hor',clase:''},// horizontales
+        {from:35, to:40,heigth:15,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:15,type:'hor',clase:''},// horizontales
+        {from:70, to:75,heigth:15,type:'hor',clase:''},// horizontales
+        
+        //  {from:45, to:50,heigth:15,type:'hor',clase:''},// horizontales
+        {from:1, to:5,heigth:20,type:'hor',clase:''},// horizontales
+        {from:30, to:70,heigth:20,type:'hor',clase:''},// horizontales
+        {from:10, to:15,heigth:20,type:'hor',clase:''},// horizontales
+        {from:75, to:85,heigth:20,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:30,heigth:25,type:'hor',clase:''},// horizontales
+        {from:50, to:55,heigth:25,type:'hor',clase:''},// horizontales
+        {from:65, to:75,heigth:25,type:'hor',clase:''},// horizontales
+       
+        {from:60, to:70,heigth:30,type:'hor',clase:''},// horizontales
+        {from:45, to:55,heigth:30,type:'hor',clase:''},// horizontales
+        {from:20, to:40,heigth:30,type:'hor',clase:''},// horizontales
+
+        {from:10, to:15,heigth:35,type:'hor',clase:''},// horizontales
+        {from:35, to:45,heigth:35,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:35,type:'hor',clase:''},// horizontales
+        
+        {from:60, to:75,heigth:40,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:40,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:40,type:'hor',clase:''},// horizontales
+        
+        {from:1, to:5,heigth:45,type:'hor',clase:''},// horizontales
+        {from:15, to:25,heigth:45,type:'hor',clase:''},// horizontales
+        {from:40, to:45,heigth:45,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:45,type:'hor',clase:''},// horizontales
+        {from:70, to:80,heigth:45,type:'hor',clase:''},// horizontales
+        
+        {from:65, to:70,heigth:50,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:50,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:50,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:50,type:'hor',clase:''},// horizontales
+
+    ]
+    }
+    
+
+
+    let level1 = {
+        'walls':[
+        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
+        {from:1, to:50,heigth:4,type:'hor',clase:'limit'},
+        {from:1, to:50,heigth:55,type:'hor',clase:'limit'},
+        {from:4, to:55,heigth:50,type:'vert',clase:'limit'},
+        
+        {from:10, to:30,heigth:5,type:'vert'},// lineas verticales 
+        {from:10, to:20,heigth:10,type:'vert'},{from:15, to:40,heigth:20,type:'vert'},{from:10, to:30,heigth:25,type:'vert'}, 
+        {from:15, to:25,heigth:35,type:'vert'},{from:30, to:35,heigth:40,type:'vert'},{from:30, to:35,heigth:30,type:'vert'}, 
+        {from:5, to:15,heigth:45,type:'vert'},{from:30, to:45,heigth:15,type:'vert'},{from:45, to:55,heigth:20,type:'vert'}, 
+        {from:35, to:50,heigth:35,type:'vert'},{from:40, to:50,heigth:25,type:'vert'},{from:40, to:50,heigth:40,type:'vert'}, 
+        {from:30, to:50,heigth:10,type:'vert'},{from:50, to:55,heigth:45,type:'vert'},
+        
+        {from:5, to:40,heigth:10,type:'hor'},// lineas horizontales
+        {from:30, to:45,heigth:15,type:'hor'},{from:15, to:20,heigth:15,type:'hor'},
+        {from:10, to:15,heigth:20,type:'hor'},{from:25, to:30,heigth:20,type:'hor'},
+        {from:40, to:50,heigth:20,type:'hor'},{from:5, to:20,heigth:25,type:'hor'},
+        {from:30, to:45,heigth:25,type:'hor'},{from:30, to:45,heigth:30,type:'hor'},
+        {from:10, to:15,heigth:30,type:'hor'},{from:1, to:5,heigth:45,type:'hor'},
+        {from:1, to:5,heigth:35,type:'hor'},{from:40, to:50,heigth:35,type:'hor'},
+        {from:25, to:35,heigth:35,type:'hor'},{from:20, to:30,heigth:40,type:'hor'},
+        {from:35, to:45,heigth:40,type:'hor'},{from:15, to:20,heigth:45,type:'hor'},
+        {from:30, to:35,heigth:45,type:'hor'},{from:45, to:50,heigth:45,type:'hor'},
+        {from:5, to:10,heigth:40,type:'hor'},{from:25, to:30,heigth:50,type:'hor'},
+        {from:5, to:15,heigth:50,type:'hor'}
+    ]
+    }
+        
+    
+ 
 
 </script>
 </body>
