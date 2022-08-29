@@ -12,17 +12,18 @@
         }
 
         canvas{
-            /* border: 1px solid black; */
+             /* border: 1px solid black;  */
         }
 
         .nivel1{
-            padding-left: 20%;
+            margin-left:10%;
             width:810px;
             height: 810px;
         }
         .nivel2{
-        /* //    width:1000px; */
-            padding-left: 1%;
+            /* //    width:1000px; */
+            
+            /* padding-left: 0  %; */
             width:810px;
             height:810px;
 
@@ -32,37 +33,189 @@
         #imagen{
             display: none;
         }
+        .containerl1{
+            padding-left: 25%;
+            /* border: 1px solid red; */
+        }
+        .containerl2{
+            /* padding-left: }1%; */
+            /* border: 1px solid red; */
+        }
     
     </style>
 </head>
 <body>
-    <center>
-        <canvas id="canvas"  width="810" height="810" class="nivel1">
-            Hola, tu navegador no funciona
-        </canvas>
-
-        <!-- <input type="radio" id="move"> -->
-        <!-- }  <img src="descarga.jpg" alt="" id="imagen"> -->
-    </center>
-    <button onclick="levelUp()">GDFG</button>
+    <button onclick="newGame()">New Game</button>
+ 
+    <div id='contenedor' class = container>
+        <center>
+            <canvas id="canvas"  width="810" height="810">
+                Hola, tu navegador no funciona
+            </canvas>
+            
+            <!-- <input type="radio" id="move"> -->
+            <!-- }  <img src="descarga.jpg" alt="" id="imagen"> -->
+        </center>
+    </div>
         
 
     <script>
+            let level2 = {
+        'tipoContenedor' : 'containerl2',
+        'clase':'level2',
+        'walls':[
+        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
+        {from:1, to:80,heigth:4,type:'hor',clase:'limit'},
+        {from:1, to:80,heigth:55,type:'hor',clase:'limit'},
+        {from:4, to:55,heigth:80,type:'vert',clase:'limit'},
+        
+      
+        {from:25, to:40,heigth:5, type:'vert',clase:''},// verticales 
+        // {from:50, to:55,heigth:5, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:5,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales 
+        {from:40, to:50,heigth:10, type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:10, type:'vert',clase:''},// verticales 
+       
+        {from:25, to:30,heigth:15,type:'vert',clase:''},// verticales 
+        {from:35, to:55,heigth:15, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:15,type:'vert',clase:''},// verticales         
+       
+        {from:50, to:55,heigth:20, type:'vert',clase:''},// verticales +++
+        {from:15, to:25,heigth:20,type:'vert',clase:''},// verticales 
+        {from:30, to:40,heigth:20,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:20,heigth:25,type:'vert',clase:''},// verticales 
+        {from:35, to:40,heigth:25, type:'vert',clase:''},// verticales 
+       
+        {from:10, to:15,heigth:30,type:'vert',clase:''},// verticales 
+        {from:20, to:25,heigth:30,type:'vert',clase:''},// verticales 
+        {from:30, to:45,heigth:30, type:'vert',clase:''},// verticales 
+       
+        {from:45, to:55,heigth:35, type:'vert',clase:''},// verticales
+        {from:25, to:30,heigth:35, type:'vert',clase:''},// verticales 
+       
+        {from:40, to:45,heigth:40, type:'vert',clase:''},// verticales
+        {from:15, to:30,heigth:40,type:'vert',clase:''},// verticales 
+       
+        {from:25, to:40,heigth:45, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:45, type:'vert',clase:''},// verticales
+        {from:4, to:15,heigth:45,type:'vert',clase:''},// verticales 
+        
+        {from:35, to:50,heigth:50, type:'vert',clase:''},// verticales
+        {from:15, to:25,heigth:50,type:'vert',clase:''},// verticales 
+            
+        {from:4, to:15,heigth:55,type:'vert',clase:''},// verticales 
+        {from:40, to:45,heigth:55, type:'vert',clase:''},// verticales
+        {from:30, to:35,heigth:55, type:'vert',clase:''},// verticales 
+        
+        {from:20, to:30,heigth:60,type:'vert',clase:''},// verticales 
+        {from:45, to:55,heigth:60, type:'vert',clase:''},// verticales
+        {from:35, to:40,heigth:60, type:'vert',clase:''},// verticales
+        
+        {from:30, to:35,heigth:65, type:'vert',clase:''},// verticales 
+        {from:10, to:15,heigth:65,type:'vert',clase:''},// verticales 
+        
+        {from:15, to:20,heigth:70,type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:70, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:70, type:'vert',clase:''},// verticales
+        
+        {from:45, to:55,heigth:75, type:'vert',clase:''},// verticales
+        {from:20, to:40,heigth:75, type:'vert',clase:''},// verticales 
+        
+    
+
+        {from:15, to:25,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:30, to:40,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:50, to:55,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:60, to:80,heigth:10,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:10,heigth:15,type:'hor',clase:''},// horizontales
+        {from:25, to:30,heigth:15,type:'hor',clase:''},// horizontales
+        {from:35, to:40,heigth:15,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:15,type:'hor',clase:''},// horizontales
+        {from:70, to:75,heigth:15,type:'hor',clase:''},// horizontales
+        
+        //  {from:45, to:50,heigth:15,type:'hor',clase:''},// horizontales
+        {from:1, to:5,heigth:20,type:'hor',clase:''},// horizontales
+        {from:30, to:70,heigth:20,type:'hor',clase:''},// horizontales
+        {from:10, to:15,heigth:20,type:'hor',clase:''},// horizontales
+        {from:75, to:85,heigth:20,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:30,heigth:25,type:'hor',clase:''},// horizontales
+        {from:50, to:55,heigth:25,type:'hor',clase:''},// horizontales
+        {from:65, to:75,heigth:25,type:'hor',clase:''},// horizontales
+       
+        {from:60, to:70,heigth:30,type:'hor',clase:''},// horizontales
+        {from:45, to:55,heigth:30,type:'hor',clase:''},// horizontales
+        {from:20, to:40,heigth:30,type:'hor',clase:''},// horizontales
+
+        {from:10, to:15,heigth:35,type:'hor',clase:''},// horizontales
+        {from:35, to:45,heigth:35,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:35,type:'hor',clase:''},// horizontales
+        
+        {from:60, to:75,heigth:40,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:40,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:40,type:'hor',clase:''},// horizontales
+        
+        {from:1, to:5,heigth:45,type:'hor',clase:''},// horizontales
+        {from:15, to:25,heigth:45,type:'hor',clase:''},// horizontales
+        {from:40, to:45,heigth:45,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:45,type:'hor',clase:''},// horizontales
+        {from:70, to:80,heigth:45,type:'hor',clase:''},// horizontales
+        
+        {from:65, to:70,heigth:50,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:50,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:50,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:50,type:'hor',clase:''},// horizontales
+
+    ]
+    }
+    
+
+
+    let level1 = {
+        'tipoContenedor' : 'containerl1',
+        'clase':'level1',
+        'walls':[
+        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
+        {from:1, to:50,heigth:4,type:'hor',clase:'limit'},
+        {from:1, to:50,heigth:55,type:'hor',clase:'limit'},
+        {from:4, to:55,heigth:50,type:'vert',clase:'limit'},
+        
+        {from:10, to:30,heigth:5,type:'vert'},// lineas verticales 
+        {from:10, to:20,heigth:10,type:'vert'},{from:15, to:40,heigth:20,type:'vert'},{from:10, to:30,heigth:25,type:'vert'}, 
+        {from:15, to:25,heigth:35,type:'vert'},{from:30, to:35,heigth:40,type:'vert'},{from:30, to:35,heigth:30,type:'vert'}, 
+        {from:5, to:15,heigth:45,type:'vert'},{from:30, to:45,heigth:15,type:'vert'},{from:45, to:55,heigth:20,type:'vert'}, 
+        {from:35, to:50,heigth:35,type:'vert'},{from:40, to:50,heigth:25,type:'vert'},{from:40, to:50,heigth:40,type:'vert'}, 
+        {from:30, to:50,heigth:10,type:'vert'},{from:50, to:55,heigth:45,type:'vert'},
+        
+        {from:5, to:40,heigth:10,type:'hor'},// lineas horizontales
+        {from:30, to:45,heigth:15,type:'hor'},{from:15, to:20,heigth:15,type:'hor'},
+        {from:10, to:15,heigth:20,type:'hor'},{from:25, to:30,heigth:20,type:'hor'},
+        {from:40, to:50,heigth:20,type:'hor'},{from:5, to:20,heigth:25,type:'hor'},
+        {from:30, to:45,heigth:25,type:'hor'},{from:30, to:45,heigth:30,type:'hor'},
+        {from:10, to:15,heigth:30,type:'hor'},{from:1, to:5,heigth:45,type:'hor'},
+        {from:1, to:5,heigth:35,type:'hor'},{from:40, to:50,heigth:35,type:'hor'},
+        {from:25, to:35,heigth:35,type:'hor'},{from:20, to:30,heigth:40,type:'hor'},
+        {from:35, to:45,heigth:40,type:'hor'},{from:15, to:20,heigth:45,type:'hor'},
+        {from:30, to:35,heigth:45,type:'hor'},{from:45, to:50,heigth:45,type:'hor'},
+        {from:5, to:10,heigth:40,type:'hor'},{from:25, to:30,heigth:50,type:'hor'},
+        {from:5, to:15,heigth:50,type:'hor'}
+    ]
+    }
         var canvas = null;
         var ctx = null;
-        var color = 'red';
-        var fig = 'arc';
         var press = false;
         let direccion = 'rigth';
 
-        var superX = 0;
-        var superY = 0; 
+ 
         var player1 = null;
         var player2 = null;
         let speed = 5;
 
         let score = 0;
-
 
         let shark  =new Image();
         let coin  =new Image();
@@ -73,50 +226,42 @@
 
         let pause = false;
 
-
         let pared2  = null;
         let pared  = null;
         let paredes = [];
+         let currentLevel = level1;
+
+ 
         function run(){
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
-            player1 = new Cuadro(5,5, 40,40, 'red');
+            player1 = new Cuadro(5,5, 40,40, 'white');
             player2 = new Cuadro(26, 51, 40,40, 'green')
-     
-            canvas.addEventListener('click', e=>{
-                console.log(e.offsetX, e.offsetY);
-            })
-
-//paredes
-
-
-walls();
-                   
  
-    
+            //paredes
 
-       console.log('setup');
+            walls(currentLevel);
+                            
 
+            console.log('setup');
             shark.src = 'pikachu.gif';
             ///shark.src = 'ball.png';
             coin.src = 'piedra2.png';
-
-
             audio1.src = 'opening.mp3';
             audio2.src = 'mario-coin.mp3';
             paint();
         }
 
 
-function createWalls(x, y, type = null, point_size){
-      //   coords.forEach(element => {
-             paredes.push(new Cuadro(x,y,point_size,point_size,'green', type));
-         //    paredes.push(new Cuadro(coords.x,coords.y,8,8,'rgb(98, 171, 142, 1)'));
-            //  paredes.push(new Cuadro(coords.x,coords.y,6,6,'rgb(176, 252, 125, 1)'));
-           
-        //}); 
-    	// console.log(paredes);
-}
+        function createWalls(x, y, type = null, point_size){
+            //   coords.forEach(element => {
+                    paredes.push(new Cuadro(x,y,point_size,point_size,'green', type));
+                //    paredes.push(new Cuadro(coords.x,coords.y,8,8,'rgb(98, 171, 142, 1)'));
+                    //  paredes.push(new Cuadro(coords.x,coords.y,6,6,'rgb(176, 252, 125, 1)'));
+                
+                //}); 
+                // console.log(paredes);
+        }
 
 /* while(true){
     audio1.play();
@@ -136,71 +281,43 @@ function createWalls(x, y, type = null, point_size){
             ctx.fillStyle = player1.c;
 
 
-           ctx.fillRect(player1.x,  player1.y, 40,40);
+            ctx.fillRect(player1.x,  player1.y, 40,40);
 
-            // ctx.drawImage(shark, player1.x, player1.y, 40,40);
+             ctx.drawImage(shark, player1.x, player1.y, 40,40);
            // ctx.fillStyle = player2.c;
             ctx.drawImage(coin, player2.x, player2.y, 40,40);
-
-
 
             paredes.forEach(pared => {
                 pared.pintar(ctx);
             });
-/*             pared.pintar(ctx);
+ 
+            if(pause){
+                ctx.font = '50px KulminoituvaRegular';
+                ctx.fillStyle = 'yellow';
+            //  ctx.strokeText('P a u s e', 135, 300);
+                ctx.fillText('P a u s e', 135,300); 
+                ctx.fillStyle = 'rgba(0,0,0,0.5)';
+                //drawStroked("37°", 50, 150);
+                ctx.fillStyle = 'rgba(246,45,20,0.5)';
+                ctx.fillRect(1,40,505,510);
+                audio1.pause();
+            }else{
+                if(press)
+                update()
+                // if(document.getElementById('move').value  == 'off')
+                press = false;
+                audio1.play();
+            }
 
-            pared2.pintar(ctx); */
-/*             ctx.font = '10px serif';
-            ctx.fillText(`SCORE: ${score}`, 10,10);
- */
-        if(pause){
-             ctx.font = '50px KulminoituvaRegular';
-            ctx.fillStyle = 'yellow';
-          //  ctx.strokeText('P a u s e', 135, 300);
-            ctx.fillText('P a u s e', 135,300); 
-            ctx.fillStyle = 'rgba(0,0,0,0.5)';
-            //drawStroked("37°", 50, 150);
-            ctx.fillStyle = 'rgba(246,45,20,0.5)';
-            ctx.fillRect(1,40,505,510);
-            audio1.pause();
-        }else{
-            if(press)
-            update()
-            // if(document.getElementById('move').value  == 'off')
-            press = false;
-            audio1.play();
-        }
-
-           // update();
-          /*   ctx.fillStyle = 'green';
-            ctx.fillRect(player2.x,  player2.y, 40,40);
- */
-/* 
-            player1.x+=10;
-
-            if(player1.x>500)
-            player1.x = 0; */
-           
-      /*       player2.x+=15;
-
-            if(player2.x>500)
-            player2.x = 0;
-*/
-             if(player1.se_tocan(player2)){
+ 
+            if(player1.se_tocan(player2)){
                 console.log('toca'); 
                 shark.src = 'raichu.gif';
                 coin.src = '';   
                 endGame();
             }
-    function drawStroked(text, x, y) {
-        ctx.font = '50px KulminoituvaRegular'
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 8;
-    ctx.strokeText(text, x, y);
-    ctx.fillStyle = 'white';
-    ctx.fillText(text, x, y);
-}
-
+        }
+        
  function update(){
  
    // audio1.play();
@@ -288,7 +405,7 @@ function createWalls(x, y, type = null, point_size){
 
 
             
-        }
+        
 
         window.requestAnimationFrame = (function () {
         return window.requestAnimationFrame ||
@@ -404,15 +521,20 @@ function createWalls(x, y, type = null, point_size){
             );
         })
     }
-    function walls(){
-        canvas.classList.add('nivel2');
-        loadLevel(level2.walls);
+    function walls(nivel){
+        canvas.classList = [];
+
+        canvas.classList.add(nivel.clase);
+        loadLevel(nivel.walls);
+        let contenedor = document.getElementById('contenedor');
+        contenedor.classList = [];
+        contenedor.classList.add(nivel.tipoContenedor)
     }
 
 
 
 
-    function levelUp(){
+    function newGame(){
         paredes = []
     //    canvas.classList.add('nivel2');
        // loadLevel(level1)
@@ -425,7 +547,7 @@ function createWalls(x, y, type = null, point_size){
                 e = null;  
             }
         })); */
-        run();
+      //  run();
         console.log(paredes.length);
     }
 
@@ -444,182 +566,21 @@ function createWalls(x, y, type = null, point_size){
 
     function endGame(){
         // audio2.play();// asi no se reproducia el audio XD
-        
         let time = setTimeout(()=>{
             audio2.play();
         }, 0);
         // clearInterval(time);
-        levelUp();
+       //levelUp();
+       currentLevel = level2;
+       newGame();
+        run();
+       
     }
     
     
 
  
-    let level2 = {
-        'walls':[
-        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
-        {from:1, to:80,heigth:4,type:'hor',clase:'limit'},
-        {from:1, to:80,heigth:55,type:'hor',clase:'limit'},
-        {from:4, to:55,heigth:80,type:'vert',clase:'limit'},
-        
-     /*    {from:4, to:10,heigth:75,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:70,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:65,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:60,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:55,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:50,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:45,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:40,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:35,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:30,type:'vert',clase:''},// verticales 
-        // {from:4, to:10,heigth:25,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:20,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:15,type:'vert',clase:''},// verticales 
-        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales  */
-        {from:25, to:40,heigth:5, type:'vert',clase:''},// verticales 
-        // {from:50, to:55,heigth:5, type:'vert',clase:''},// verticales 
-        {from:10, to:20,heigth:5,type:'vert',clase:''},// verticales 
-       
-        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales 
-        {from:40, to:50,heigth:10, type:'vert',clase:''},// verticales 
-        {from:30, to:35,heigth:10, type:'vert',clase:''},// verticales 
-       
-        {from:25, to:30,heigth:15,type:'vert',clase:''},// verticales 
-        {from:35, to:55,heigth:15, type:'vert',clase:''},// verticales 
-        {from:10, to:20,heigth:15,type:'vert',clase:''},// verticales         
-       
-        {from:50, to:55,heigth:20, type:'vert',clase:''},// verticales +++
-        {from:15, to:25,heigth:20,type:'vert',clase:''},// verticales 
-        {from:30, to:40,heigth:20,type:'vert',clase:''},// verticales 
-       
-        {from:4, to:20,heigth:25,type:'vert',clase:''},// verticales 
-        {from:35, to:40,heigth:25, type:'vert',clase:''},// verticales 
-       
-        {from:10, to:15,heigth:30,type:'vert',clase:''},// verticales 
-        {from:20, to:25,heigth:30,type:'vert',clase:''},// verticales 
-        {from:30, to:45,heigth:30, type:'vert',clase:''},// verticales 
-       
-        {from:45, to:55,heigth:35, type:'vert',clase:''},// verticales
-        {from:25, to:30,heigth:35, type:'vert',clase:''},// verticales 
-       
-        {from:40, to:45,heigth:40, type:'vert',clase:''},// verticales
-        {from:15, to:30,heigth:40,type:'vert',clase:''},// verticales 
-       
-        {from:25, to:40,heigth:45, type:'vert',clase:''},// verticales 
-        {from:45, to:50,heigth:45, type:'vert',clase:''},// verticales
-        {from:4, to:15,heigth:45,type:'vert',clase:''},// verticales 
-        
-        {from:35, to:50,heigth:50, type:'vert',clase:''},// verticales
-        {from:15, to:25,heigth:50,type:'vert',clase:''},// verticales 
-            
-        {from:4, to:15,heigth:55,type:'vert',clase:''},// verticales 
-        {from:40, to:45,heigth:55, type:'vert',clase:''},// verticales
-        {from:30, to:35,heigth:55, type:'vert',clase:''},// verticales 
-        
-        {from:20, to:30,heigth:60,type:'vert',clase:''},// verticales 
-        {from:45, to:55,heigth:60, type:'vert',clase:''},// verticales
-        {from:35, to:40,heigth:60, type:'vert',clase:''},// verticales
-        
-        {from:30, to:35,heigth:65, type:'vert',clase:''},// verticales 
-        {from:10, to:15,heigth:65,type:'vert',clase:''},// verticales 
-        
-        {from:15, to:20,heigth:70,type:'vert',clase:''},// verticales 
-        {from:30, to:35,heigth:70, type:'vert',clase:''},// verticales 
-        {from:45, to:50,heigth:70, type:'vert',clase:''},// verticales
-        
-        {from:45, to:55,heigth:75, type:'vert',clase:''},// verticales
-        {from:20, to:40,heigth:75, type:'vert',clase:''},// verticales 
-        
-        
 
-
-
-        
-   
-        
-        
-        
-        
-
-
-
-        {from:15, to:25,heigth:10,type:'hor',clase:''},// horizontales 
-        {from:30, to:40,heigth:10,type:'hor',clase:''},// horizontales 
-        {from:50, to:55,heigth:10,type:'hor',clase:''},// horizontales 
-        {from:60, to:80,heigth:10,type:'hor',clase:''},// horizontales
-        
-        {from:5, to:10,heigth:15,type:'hor',clase:''},// horizontales
-        {from:25, to:30,heigth:15,type:'hor',clase:''},// horizontales
-        {from:35, to:40,heigth:15,type:'hor',clase:''},// horizontales
-        {from:55, to:65,heigth:15,type:'hor',clase:''},// horizontales
-        {from:70, to:75,heigth:15,type:'hor',clase:''},// horizontales
-        
-        //  {from:45, to:50,heigth:15,type:'hor',clase:''},// horizontales
-        {from:1, to:5,heigth:20,type:'hor',clase:''},// horizontales
-        {from:30, to:70,heigth:20,type:'hor',clase:''},// horizontales
-        {from:10, to:15,heigth:20,type:'hor',clase:''},// horizontales
-        {from:75, to:85,heigth:20,type:'hor',clase:''},// horizontales
-        
-        {from:5, to:30,heigth:25,type:'hor',clase:''},// horizontales
-        {from:50, to:55,heigth:25,type:'hor',clase:''},// horizontales
-        {from:65, to:75,heigth:25,type:'hor',clase:''},// horizontales
-       
-        {from:60, to:70,heigth:30,type:'hor',clase:''},// horizontales
-        {from:45, to:55,heigth:30,type:'hor',clase:''},// horizontales
-        {from:20, to:40,heigth:30,type:'hor',clase:''},// horizontales
-
-        {from:10, to:15,heigth:35,type:'hor',clase:''},// horizontales
-        {from:35, to:45,heigth:35,type:'hor',clase:''},// horizontales
-        {from:50, to:60,heigth:35,type:'hor',clase:''},// horizontales
-        
-        {from:60, to:75,heigth:40,type:'hor',clase:''},// horizontales
-        {from:25, to:40,heigth:40,type:'hor',clase:''},// horizontales
-        {from:5, to:10,heigth:40,type:'hor',clase:''},// horizontales
-        
-        {from:1, to:5,heigth:45,type:'hor',clase:''},// horizontales
-        {from:15, to:25,heigth:45,type:'hor',clase:''},// horizontales
-        {from:40, to:45,heigth:45,type:'hor',clase:''},// horizontales
-        {from:55, to:65,heigth:45,type:'hor',clase:''},// horizontales
-        {from:70, to:80,heigth:45,type:'hor',clase:''},// horizontales
-        
-        {from:65, to:70,heigth:50,type:'hor',clase:''},// horizontales
-        {from:50, to:60,heigth:50,type:'hor',clase:''},// horizontales
-        {from:25, to:40,heigth:50,type:'hor',clase:''},// horizontales
-        {from:5, to:10,heigth:50,type:'hor',clase:''},// horizontales
-
-    ]
-    }
-    
-
-
-    let level1 = {
-        'walls':[
-        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
-        {from:1, to:50,heigth:4,type:'hor',clase:'limit'},
-        {from:1, to:50,heigth:55,type:'hor',clase:'limit'},
-        {from:4, to:55,heigth:50,type:'vert',clase:'limit'},
-        
-        {from:10, to:30,heigth:5,type:'vert'},// lineas verticales 
-        {from:10, to:20,heigth:10,type:'vert'},{from:15, to:40,heigth:20,type:'vert'},{from:10, to:30,heigth:25,type:'vert'}, 
-        {from:15, to:25,heigth:35,type:'vert'},{from:30, to:35,heigth:40,type:'vert'},{from:30, to:35,heigth:30,type:'vert'}, 
-        {from:5, to:15,heigth:45,type:'vert'},{from:30, to:45,heigth:15,type:'vert'},{from:45, to:55,heigth:20,type:'vert'}, 
-        {from:35, to:50,heigth:35,type:'vert'},{from:40, to:50,heigth:25,type:'vert'},{from:40, to:50,heigth:40,type:'vert'}, 
-        {from:30, to:50,heigth:10,type:'vert'},{from:50, to:55,heigth:45,type:'vert'},
-        
-        {from:5, to:40,heigth:10,type:'hor'},// lineas horizontales
-        {from:30, to:45,heigth:15,type:'hor'},{from:15, to:20,heigth:15,type:'hor'},
-        {from:10, to:15,heigth:20,type:'hor'},{from:25, to:30,heigth:20,type:'hor'},
-        {from:40, to:50,heigth:20,type:'hor'},{from:5, to:20,heigth:25,type:'hor'},
-        {from:30, to:45,heigth:25,type:'hor'},{from:30, to:45,heigth:30,type:'hor'},
-        {from:10, to:15,heigth:30,type:'hor'},{from:1, to:5,heigth:45,type:'hor'},
-        {from:1, to:5,heigth:35,type:'hor'},{from:40, to:50,heigth:35,type:'hor'},
-        {from:25, to:35,heigth:35,type:'hor'},{from:20, to:30,heigth:40,type:'hor'},
-        {from:35, to:45,heigth:40,type:'hor'},{from:15, to:20,heigth:45,type:'hor'},
-        {from:30, to:35,heigth:45,type:'hor'},{from:45, to:50,heigth:45,type:'hor'},
-        {from:5, to:10,heigth:40,type:'hor'},{from:25, to:30,heigth:50,type:'hor'},
-        {from:5, to:15,heigth:50,type:'hor'}
-    ]
-    }
         
     
  
