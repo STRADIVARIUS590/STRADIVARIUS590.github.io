@@ -1,0 +1,166 @@
+
+        // paredes 
+        fence(4,55,0,'vert', 'limit');
+        fence(1, 50,4, 'hor', 'limit')
+        fence(1, 50, 55, 'hor', 'limit');
+        fence(4, 55,50, 'vert', 'limit');
+
+        // lineas verticales 
+        fence(10,30,5,'vert','');
+        fence(10,20,10,'vert','');
+        fence(15,40,20,'vert','');
+        fence(10,30,25,'vert','');
+        fence(15,25,35,'vert','');
+        fence(30,35,40,'vert','');
+        fence(30,35,30,'vert','');
+        fence(5,15,45,'vert','');
+        fence(30,50,10,'vert','');
+        fence(30,45,15,'vert','');
+        fence(45,55,20,'vert','');
+        fence(35,50,35,'vert','');
+        fence(40,50,25,'vert','');
+        fence(40,50,40,'vert','')
+        fence(50,55,45,'vert','')
+        fence(50,55,30,'vert','')
+
+
+        // horizontal 
+
+        fence(5,40,10,'hor','')
+        fence(30,45,15,'hor','') 
+        fence(15,20,15,'hor','')
+        fence(10,15 ,20,'hor','')
+        fence(25,30 ,20,'hor','')
+        fence(40,50 ,20,'hor','')
+        fence(5,20,25,'hor','')
+        fence(30,45,25,'hor','')
+        fence(30,45,30,'hor','')
+        fence(10,15,30,'hor','')
+        
+        fence(5,10,40,'hor','')
+        fence(1,5,45,'hor','')
+        fence(1,5,35,'hor','')
+        fence(40,50,35,'hor','')
+        fence(25,35,35,'hor','')
+        fence(20,30,40,'hor','')
+        fence(35,45,40,'hor','')
+        fence(15,20,45,'hor','')
+        fence(30,35,45,'hor','')
+        fence(45,50,45,'hor','')
+        fence(25,30,50,'hor','')
+        fence(5,15,50,'hor','')
+
+
+
+         let level2 = {
+        'tipoContenedor' : 'containerl2',
+        'clase':'level2',
+        'walls':[
+        {from:4, to:55,heigth:0,type:'vert',clase:'limit'},// paredes 
+        {from:1, to:80,heigth:4,type:'hor',clase:'limit'},
+        {from:1, to:80,heigth:55,type:'hor',clase:'limit'},
+        {from:4, to:55,heigth:80,type:'vert',clase:'limit'},
+        
+      
+        {from:25, to:40,heigth:5, type:'vert',clase:''},// verticales 
+        // {from:50, to:55,heigth:5, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:5,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:10,heigth:10,type:'vert',clase:''},// verticales 
+        {from:40, to:50,heigth:10, type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:10, type:'vert',clase:''},// verticales 
+       
+        {from:25, to:30,heigth:15,type:'vert',clase:''},// verticales 
+        {from:35, to:55,heigth:15, type:'vert',clase:''},// verticales 
+        {from:10, to:20,heigth:15,type:'vert',clase:''},// verticales         
+       
+        {from:50, to:55,heigth:20, type:'vert',clase:''},// verticales +++
+        {from:15, to:25,heigth:20,type:'vert',clase:''},// verticales 
+        {from:30, to:40,heigth:20,type:'vert',clase:''},// verticales 
+       
+        {from:4, to:20,heigth:25,type:'vert',clase:''},// verticales 
+        {from:35, to:40,heigth:25, type:'vert',clase:''},// verticales 
+       
+        {from:10, to:15,heigth:30,type:'vert',clase:''},// verticales 
+        {from:20, to:25,heigth:30,type:'vert',clase:''},// verticales 
+        {from:30, to:45,heigth:30, type:'vert',clase:''},// verticales 
+       
+        {from:45, to:55,heigth:35, type:'vert',clase:''},// verticales
+        {from:25, to:30,heigth:35, type:'vert',clase:''},// verticales 
+       
+        {from:40, to:45,heigth:40, type:'vert',clase:''},// verticales
+        {from:15, to:30,heigth:40,type:'vert',clase:''},// verticales 
+       
+        {from:25, to:40,heigth:45, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:45, type:'vert',clase:''},// verticales
+        {from:4, to:15,heigth:45,type:'vert',clase:''},// verticales 
+        
+        {from:35, to:50,heigth:50, type:'vert',clase:''},// verticales
+        {from:15, to:25,heigth:50,type:'vert',clase:''},// verticales 
+            
+        {from:4, to:15,heigth:55,type:'vert',clase:''},// verticales 
+        {from:40, to:45,heigth:55, type:'vert',clase:''},// verticales
+        {from:30, to:35,heigth:55, type:'vert',clase:''},// verticales 
+        
+        {from:20, to:30,heigth:60,type:'vert',clase:''},// verticales 
+        {from:45, to:55,heigth:60, type:'vert',clase:''},// verticales
+        {from:35, to:40,heigth:60, type:'vert',clase:''},// verticales
+        
+        {from:30, to:35,heigth:65, type:'vert',clase:''},// verticales 
+        {from:10, to:15,heigth:65,type:'vert',clase:''},// verticales 
+        
+        {from:15, to:20,heigth:70,type:'vert',clase:''},// verticales 
+        {from:30, to:35,heigth:70, type:'vert',clase:''},// verticales 
+        {from:45, to:50,heigth:70, type:'vert',clase:''},// verticales
+        
+        {from:45, to:55,heigth:75, type:'vert',clase:''},// verticales
+        {from:20, to:40,heigth:75, type:'vert',clase:''},// verticales 
+        
+    
+
+        {from:15, to:25,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:30, to:40,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:50, to:55,heigth:10,type:'hor',clase:''},// horizontales 
+        {from:60, to:80,heigth:10,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:10,heigth:15,type:'hor',clase:''},// horizontales
+        {from:25, to:30,heigth:15,type:'hor',clase:''},// horizontales
+        {from:35, to:40,heigth:15,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:15,type:'hor',clase:''},// horizontales
+        {from:70, to:75,heigth:15,type:'hor',clase:''},// horizontales
+        
+        //  {from:45, to:50,heigth:15,type:'hor',clase:''},// horizontales
+        {from:1, to:5,heigth:20,type:'hor',clase:''},// horizontales
+        {from:30, to:70,heigth:20,type:'hor',clase:''},// horizontales
+        {from:10, to:15,heigth:20,type:'hor',clase:''},// horizontales
+        {from:75, to:85,heigth:20,type:'hor',clase:''},// horizontales
+        
+        {from:5, to:30,heigth:25,type:'hor',clase:''},// horizontales
+        {from:50, to:55,heigth:25,type:'hor',clase:''},// horizontales
+        {from:65, to:75,heigth:25,type:'hor',clase:''},// horizontales
+       
+        {from:60, to:70,heigth:30,type:'hor',clase:''},// horizontales
+        {from:45, to:55,heigth:30,type:'hor',clase:''},// horizontales
+        {from:20, to:40,heigth:30,type:'hor',clase:''},// horizontales
+
+        {from:10, to:15,heigth:35,type:'hor',clase:''},// horizontales
+        {from:35, to:45,heigth:35,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:35,type:'hor',clase:''},// horizontales
+        
+        {from:60, to:75,heigth:40,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:40,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:40,type:'hor',clase:''},// horizontales
+        
+        {from:1, to:5,heigth:45,type:'hor',clase:''},// horizontales
+        {from:15, to:25,heigth:45,type:'hor',clase:''},// horizontales
+        {from:40, to:45,heigth:45,type:'hor',clase:''},// horizontales
+        {from:55, to:65,heigth:45,type:'hor',clase:''},// horizontales
+        {from:70, to:80,heigth:45,type:'hor',clase:''},// horizontales
+        
+        {from:65, to:70,heigth:50,type:'hor',clase:''},// horizontales
+        {from:50, to:60,heigth:50,type:'hor',clase:''},// horizontales
+        {from:25, to:40,heigth:50,type:'hor',clase:''},// horizontales
+        {from:5, to:10,heigth:50,type:'hor',clase:''},// horizontales
+
+    ]
+    }
